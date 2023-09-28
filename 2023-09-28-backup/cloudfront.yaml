@@ -1,0 +1,1824 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Metadata:
+    Generator: "former2"
+Description: ""
+Resources:
+    EC2Instance:
+        Type: "AWS::EC2::Instance"
+        Properties:
+            ImageId: "ami-0c9c942bd7bf113a2"
+            InstanceType: "t2.small"
+            KeyName: "global-instance"
+            AvailabilityZone: !Sub "${AWS::Region}a"
+            Tenancy: "default"
+            SubnetId: "subnet-0d1bec8ee5e597576"
+            EbsOptimized: false
+            SecurityGroupIds: 
+              - !Ref EC2SecurityGroup9
+            SourceDestCheck: true
+            BlockDeviceMappings: 
+              - 
+                DeviceName: "/dev/sda1"
+                Ebs: 
+                    Encrypted: false
+                    VolumeSize: 30
+                    SnapshotId: "snap-09b4c533ece1689cd"
+                    VolumeType: "gp2"
+                    DeleteOnTermination: true
+            IamInstanceProfile: "ec2-codedeploy-role"
+            Tags: 
+              - 
+                Key: "Name"
+                Value: "Kafka-2"
+            HibernationOptions: 
+                Configured: false
+            EnclaveOptions: 
+                Enabled: false
+
+    EC2Instance2:
+        Type: "AWS::EC2::Instance"
+        Properties:
+            ImageId: "ami-0c9c942bd7bf113a2"
+            InstanceType: "t2.micro"
+            KeyName: "fe-admin"
+            AvailabilityZone: !GetAtt EC2Instance3.AvailabilityZone
+            Tenancy: "default"
+            SubnetId: "subnet-02174c2714aedd080"
+            EbsOptimized: false
+            SecurityGroupIds: 
+              - !Ref EC2SecurityGroup9
+            SourceDestCheck: true
+            BlockDeviceMappings: 
+              - 
+                DeviceName: "/dev/sda1"
+                Ebs: 
+                    Encrypted: false
+                    VolumeSize: 30
+                    SnapshotId: "snap-09b4c533ece1689cd"
+                    VolumeType: "gp2"
+                    DeleteOnTermination: true
+            IamInstanceProfile: "ec2-codedeploy-role"
+            Tags: 
+              - 
+                Key: "Name"
+                Value: !Sub "FE-${ElasticLoadBalancingV2TargetGroup4.TargetGroupName}-2"
+            HibernationOptions: 
+                Configured: false
+            EnclaveOptions: 
+                Enabled: false
+
+    EC2Instance3:
+        Type: "AWS::EC2::Instance"
+        Properties:
+            ImageId: "ami-0c9c942bd7bf113a2"
+            InstanceType: "t2.micro"
+            KeyName: "global-instance"
+            AvailabilityZone: !GetAtt EC2Instance4.AvailabilityZone
+            Tenancy: "default"
+            SubnetId: "subnet-02174c2714aedd080"
+            EbsOptimized: false
+            SecurityGroupIds: 
+              - !Ref EC2SecurityGroup9
+            SourceDestCheck: true
+            BlockDeviceMappings: 
+              - 
+                DeviceName: "/dev/sda1"
+                Ebs: 
+                    Encrypted: false
+                    VolumeSize: 30
+                    SnapshotId: "snap-09b4c533ece1689cd"
+                    VolumeType: "gp2"
+                    DeleteOnTermination: true
+            IamInstanceProfile: "ec2-codedeploy-role"
+            Tags: 
+              - 
+                Key: "Name"
+                Value: "Eureka-dev-2"
+            HibernationOptions: 
+                Configured: false
+            EnclaveOptions: 
+                Enabled: false
+
+    EC2Instance4:
+        Type: "AWS::EC2::Instance"
+        Properties:
+            ImageId: "ami-0c9c942bd7bf113a2"
+            InstanceType: "t2.micro"
+            KeyName: "global-instance"
+            AvailabilityZone: !GetAtt EC2Instance5.AvailabilityZone
+            Tenancy: "default"
+            SubnetId: "subnet-02174c2714aedd080"
+            EbsOptimized: false
+            SecurityGroupIds: 
+              - !Ref EC2SecurityGroup9
+            SourceDestCheck: true
+            BlockDeviceMappings: 
+              - 
+                DeviceName: "/dev/sda1"
+                Ebs: 
+                    Encrypted: false
+                    VolumeSize: 30
+                    SnapshotId: "snap-09b4c533ece1689cd"
+                    VolumeType: "gp2"
+                    DeleteOnTermination: true
+            Tags: 
+              - 
+                Key: "Name"
+                Value: "BE-Product-2"
+            HibernationOptions: 
+                Configured: false
+            EnclaveOptions: 
+                Enabled: false
+
+    EC2Instance5:
+        Type: "AWS::EC2::Instance"
+        Properties:
+            ImageId: "ami-0c9c942bd7bf113a2"
+            InstanceType: "t2.micro"
+            KeyName: "global-instance"
+            AvailabilityZone: !GetAtt EC2Instance6.AvailabilityZone
+            Tenancy: "default"
+            SubnetId: "subnet-02174c2714aedd080"
+            EbsOptimized: false
+            SecurityGroupIds: 
+              - !Ref EC2SecurityGroup9
+            SourceDestCheck: true
+            BlockDeviceMappings: 
+              - 
+                DeviceName: "/dev/sda1"
+                Ebs: 
+                    Encrypted: false
+                    VolumeSize: 30
+                    SnapshotId: "snap-09b4c533ece1689cd"
+                    VolumeType: "gp2"
+                    DeleteOnTermination: true
+            IamInstanceProfile: "ec2-codedeploy-role"
+            Tags: 
+              - 
+                Key: "Name"
+                Value: "BE-Auth-2"
+            HibernationOptions: 
+                Configured: false
+            EnclaveOptions: 
+                Enabled: false
+
+    EC2Instance6:
+        Type: "AWS::EC2::Instance"
+        Properties:
+            ImageId: "ami-0c9c942bd7bf113a2"
+            InstanceType: "t2.micro"
+            KeyName: "global-instance"
+            AvailabilityZone: !GetAtt EC2Instance7.AvailabilityZone
+            Tenancy: "default"
+            SubnetId: "subnet-02174c2714aedd080"
+            EbsOptimized: false
+            SecurityGroupIds: 
+              - !Ref EC2SecurityGroup9
+            SourceDestCheck: true
+            BlockDeviceMappings: 
+              - 
+                DeviceName: "/dev/sda1"
+                Ebs: 
+                    Encrypted: false
+                    VolumeSize: 30
+                    SnapshotId: "snap-09b4c533ece1689cd"
+                    VolumeType: "gp2"
+                    DeleteOnTermination: true
+            IamInstanceProfile: "ec2-codedeploy-role"
+            Tags: 
+              - 
+                Key: "Name"
+                Value: "BE-Global-Config-2"
+            HibernationOptions: 
+                Configured: false
+            EnclaveOptions: 
+                Enabled: false
+
+    EC2Instance7:
+        Type: "AWS::EC2::Instance"
+        Properties:
+            ImageId: "ami-0c9c942bd7bf113a2"
+            InstanceType: "t2.small"
+            KeyName: "global-instance"
+            AvailabilityZone: !GetAtt EC2Instance8.AvailabilityZone
+            Tenancy: "default"
+            SubnetId: "subnet-02174c2714aedd080"
+            EbsOptimized: false
+            SecurityGroupIds: 
+              - !Ref EC2SecurityGroup9
+            SourceDestCheck: true
+            BlockDeviceMappings: 
+              - 
+                DeviceName: "/dev/sda1"
+                Ebs: 
+                    Encrypted: false
+                    VolumeSize: 30
+                    SnapshotId: "snap-09b4c533ece1689cd"
+                    VolumeType: "gp2"
+                    DeleteOnTermination: true
+            IamInstanceProfile: "ec2-codedeploy-role"
+            Tags: 
+              - 
+                Key: "Name"
+                Value: "BE-Product-2"
+            HibernationOptions: 
+                Configured: false
+            EnclaveOptions: 
+                Enabled: false
+
+    EC2Instance8:
+        Type: "AWS::EC2::Instance"
+        Properties:
+            ImageId: "ami-0c9c942bd7bf113a2"
+            InstanceType: "t2.micro"
+            KeyName: "global-instance"
+            AvailabilityZone: !GetAtt EC2Instance9.AvailabilityZone
+            Tenancy: "default"
+            SubnetId: "subnet-02174c2714aedd080"
+            EbsOptimized: false
+            SecurityGroupIds: 
+              - !Ref EC2SecurityGroup10
+            SourceDestCheck: true
+            BlockDeviceMappings: 
+              - 
+                DeviceName: "/dev/sda1"
+                Ebs: 
+                    Encrypted: false
+                    VolumeSize: 8
+                    SnapshotId: "snap-09b4c533ece1689cd"
+                    VolumeType: "gp2"
+                    DeleteOnTermination: true
+            IamInstanceProfile: "ec2-codedeploy-role"
+            Tags: 
+              - 
+                Key: "Name"
+                Value: "FE-front-end-2"
+            HibernationOptions: 
+                Configured: false
+            EnclaveOptions: 
+                Enabled: false
+
+    EC2Instance9:
+        Type: "AWS::EC2::Instance"
+        Properties:
+            ImageId: "ami-0c9c942bd7bf113a2"
+            InstanceType: "t2.micro"
+            KeyName: "global-instance"
+            AvailabilityZone: !GetAtt EC2Instance10.AvailabilityZone
+            Tenancy: "default"
+            SubnetId: "subnet-02174c2714aedd080"
+            EbsOptimized: false
+            SecurityGroupIds: 
+              - !Ref EC2SecurityGroup9
+            SourceDestCheck: true
+            BlockDeviceMappings: 
+              - 
+                DeviceName: "/dev/sda1"
+                Ebs: 
+                    Encrypted: false
+                    VolumeSize: 30
+                    SnapshotId: "snap-09b4c533ece1689cd"
+                    VolumeType: "gp2"
+                    DeleteOnTermination: true
+            IamInstanceProfile: "ec2-codedeploy-role"
+            Tags: 
+              - 
+                Key: "Name"
+                Value: "BE-Admin-2"
+            HibernationOptions: 
+                Configured: false
+            EnclaveOptions: 
+                Enabled: false
+
+    EC2Instance10:
+        Type: "AWS::EC2::Instance"
+        Properties:
+            ImageId: "ami-0c9c942bd7bf113a2"
+            InstanceType: "t2.micro"
+            KeyName: "global-instance"
+            AvailabilityZone: !Sub "${AWS::Region}c"
+            Tenancy: "default"
+            SubnetId: "subnet-02174c2714aedd080"
+            EbsOptimized: false
+            SecurityGroupIds: 
+              - !Ref EC2SecurityGroup9
+            SourceDestCheck: true
+            BlockDeviceMappings: 
+              - 
+                DeviceName: "/dev/sda1"
+                Ebs: 
+                    Encrypted: false
+                    VolumeSize: 30
+                    SnapshotId: "snap-09b4c533ece1689cd"
+                    VolumeType: "gp2"
+                    DeleteOnTermination: true
+            IamInstanceProfile: "ec2-codedeploy-role"
+            Tags: 
+              - 
+                Key: "Name"
+                Value: "BE-Gateway/Eureka-2"
+            HibernationOptions: 
+                Configured: false
+            EnclaveOptions: 
+                Enabled: false
+
+    ElasticLoadBalancingV2LoadBalancer:
+        Type: "AWS::ElasticLoadBalancingV2::LoadBalancer"
+        Properties:
+            Name: "Liberty52-LB"
+            Scheme: "internet-facing"
+            Type: "application"
+            Subnets: 
+              - "subnet-02174c2714aedd080"
+              - "subnet-0d1bec8ee5e597576"
+            SecurityGroups: 
+              - !Ref EC2SecurityGroup11
+            IpAddressType: "ipv4"
+            LoadBalancerAttributes: 
+              - 
+                Key: "access_logs.s3.enabled"
+                Value: "false"
+              - 
+                Key: "idle_timeout.timeout_seconds"
+                Value: "60"
+              - 
+                Key: "deletion_protection.enabled"
+                Value: "false"
+              - 
+                Key: "routing.http2.enabled"
+                Value: "true"
+              - 
+                Key: "routing.http.drop_invalid_header_fields.enabled"
+                Value: "false"
+              - 
+                Key: "routing.http.xff_client_port.enabled"
+                Value: "false"
+              - 
+                Key: "routing.http.preserve_host_header.enabled"
+                Value: "false"
+              - 
+                Key: "routing.http.xff_header_processing.mode"
+                Value: "append"
+              - 
+                Key: "load_balancing.cross_zone.enabled"
+                Value: "true"
+              - 
+                Key: "routing.http.desync_mitigation_mode"
+                Value: "defensive"
+              - 
+                Key: "waf.fail_open.enabled"
+                Value: "false"
+              - 
+                Key: "routing.http.x_amzn_tls_version_and_cipher_suite.enabled"
+                Value: "false"
+
+    ElasticLoadBalancingV2Listener:
+        Type: "AWS::ElasticLoadBalancingV2::Listener"
+        Properties:
+            LoadBalancerArn: !Ref ElasticLoadBalancingV2LoadBalancer
+            Port: 443
+            Protocol: "HTTPS"
+            SslPolicy: "ELBSecurityPolicy-TLS13-1-2-2021-06"
+            Certificates: 
+              - 
+                CertificateArn: !Sub "arn:aws:acm:${AWS::Region}:${AWS::AccountId}:certificate/6283f2b6-2762-40e2-89b6-98d60c6fac0e"
+            DefaultActions: 
+              - 
+                Order: 1
+                TargetGroupArn: !Ref ElasticLoadBalancingV2TargetGroup3
+                Type: "forward"
+
+    ElasticLoadBalancingV2Listener2:
+        Type: "AWS::ElasticLoadBalancingV2::Listener"
+        Properties:
+            LoadBalancerArn: !Ref ElasticLoadBalancingV2LoadBalancer
+            Port: 444
+            Protocol: "HTTPS"
+            SslPolicy: "ELBSecurityPolicy-TLS13-1-2-2021-06"
+            Certificates: 
+              - 
+                CertificateArn: !Sub "arn:aws:acm:${AWS::Region}:${AWS::AccountId}:certificate/6283f2b6-2762-40e2-89b6-98d60c6fac0e"
+            DefaultActions: 
+              - 
+                Order: 1
+                TargetGroupArn: !Ref ElasticLoadBalancingV2TargetGroup
+                Type: "forward"
+
+    ElasticLoadBalancingV2Listener3:
+        Type: "AWS::ElasticLoadBalancingV2::Listener"
+        Properties:
+            LoadBalancerArn: !Ref ElasticLoadBalancingV2LoadBalancer
+            Port: 80
+            Protocol: "HTTP"
+            DefaultActions: 
+              - 
+                Order: 1
+                RedirectConfig: 
+                    Protocol: "HTTPS"
+                    Port: "443"
+                    Host: "#{host}"
+                    Path: "/#{path}"
+                    Query: "#{query}"
+                    StatusCode: "HTTP_301"
+                Type: "redirect"
+
+    ElasticLoadBalancingV2ListenerRule:
+        Type: "AWS::ElasticLoadBalancingV2::ListenerRule"
+        Properties:
+            Priority: "1"
+            ListenerArn: !Sub "arn:aws:elasticloadbalancing:${AWS::Region}:${AWS::AccountId}:listener/app/${ElasticLoadBalancingV2LoadBalancer.LoadBalancerName}/091c9dc7b00ccec2/4b441eec0e161ca1"
+            Conditions: 
+              - 
+                Field: "host-header"
+                Values: 
+                  - "admin.liberty52.com"
+            Actions: 
+              - 
+                Type: "forward"
+                TargetGroupArn: !Ref ElasticLoadBalancingV2TargetGroup4
+                Order: 1
+                ForwardConfig: 
+                    TargetGroups: 
+                      - 
+                        TargetGroupArn: !Ref ElasticLoadBalancingV2TargetGroup4
+                        Weight: 1
+                    TargetGroupStickinessConfig: 
+                        Enabled: false
+
+    ElasticLoadBalancingV2TargetGroup:
+        Type: "AWS::ElasticLoadBalancingV2::TargetGroup"
+        Properties:
+            HealthCheckIntervalSeconds: 30
+            HealthCheckPath: "/actuator/health"
+            Port: 8080
+            Protocol: "HTTP"
+            HealthCheckPort: "traffic-port"
+            HealthCheckProtocol: "HTTP"
+            HealthCheckTimeoutSeconds: 5
+            UnhealthyThresholdCount: 2
+            TargetType: "instance"
+            Matcher: 
+                HttpCode: "200"
+            HealthyThresholdCount: 5
+            VpcId: "vpc-0ea0500e1dda4d85b"
+            Name: "8080group"
+            HealthCheckEnabled: true
+            TargetGroupAttributes: 
+              - 
+                Key: "target_group_health.unhealthy_state_routing.minimum_healthy_targets.count"
+                Value: "1"
+              - 
+                Key: "stickiness.enabled"
+                Value: "false"
+              - 
+                Key: "target_group_health.unhealthy_state_routing.minimum_healthy_targets.percentage"
+                Value: "off"
+              - 
+                Key: "deregistration_delay.timeout_seconds"
+                Value: "300"
+              - 
+                Key: "target_group_health.dns_failover.minimum_healthy_targets.count"
+                Value: "1"
+              - 
+                Key: "stickiness.app_cookie.cookie_name"
+                Value: ""
+              - 
+                Key: "stickiness.type"
+                Value: "lb_cookie"
+              - 
+                Key: "stickiness.lb_cookie.duration_seconds"
+                Value: "86400"
+              - 
+                Key: "slow_start.duration_seconds"
+                Value: "0"
+              - 
+                Key: "stickiness.app_cookie.duration_seconds"
+                Value: "86400"
+              - 
+                Key: "target_group_health.dns_failover.minimum_healthy_targets.percentage"
+                Value: "off"
+              - 
+                Key: "load_balancing.cross_zone.enabled"
+                Value: "use_load_balancer_configuration"
+              - 
+                Key: "load_balancing.algorithm.type"
+                Value: "round_robin"
+            Targets: 
+              - 
+                Id: !Ref EC2Instance10
+                Port: 8080
+              - 
+                Id: "i-02eba91498cff1643"
+                Port: 8080
+
+    ElasticLoadBalancingV2TargetGroup2:
+        Type: "AWS::ElasticLoadBalancingV2::TargetGroup"
+        Properties:
+            HealthCheckIntervalSeconds: 30
+            HealthCheckPath: "/"
+            Port: 443
+            Protocol: "HTTPS"
+            HealthCheckPort: "traffic-port"
+            HealthCheckProtocol: "HTTPS"
+            HealthCheckTimeoutSeconds: 5
+            UnhealthyThresholdCount: 2
+            TargetType: "instance"
+            Matcher: 
+                HttpCode: "200"
+            HealthyThresholdCount: 5
+            VpcId: "vpc-0ea0500e1dda4d85b"
+            Name: "https-group"
+            HealthCheckEnabled: true
+            TargetGroupAttributes: 
+              - 
+                Key: "target_group_health.unhealthy_state_routing.minimum_healthy_targets.count"
+                Value: "1"
+              - 
+                Key: "stickiness.enabled"
+                Value: "true"
+              - 
+                Key: "target_group_health.unhealthy_state_routing.minimum_healthy_targets.percentage"
+                Value: "off"
+              - 
+                Key: "deregistration_delay.timeout_seconds"
+                Value: "300"
+              - 
+                Key: "target_group_health.dns_failover.minimum_healthy_targets.count"
+                Value: "1"
+              - 
+                Key: "stickiness.app_cookie.cookie_name"
+                Value: ""
+              - 
+                Key: "stickiness.type"
+                Value: "lb_cookie"
+              - 
+                Key: "stickiness.lb_cookie.duration_seconds"
+                Value: "86400"
+              - 
+                Key: "slow_start.duration_seconds"
+                Value: "0"
+              - 
+                Key: "stickiness.app_cookie.duration_seconds"
+                Value: "86400"
+              - 
+                Key: "target_group_health.dns_failover.minimum_healthy_targets.percentage"
+                Value: "off"
+              - 
+                Key: "load_balancing.cross_zone.enabled"
+                Value: "use_load_balancer_configuration"
+              - 
+                Key: "load_balancing.algorithm.type"
+                Value: "round_robin"
+            Targets: 
+              - 
+                Id: "i-0a7bd5bdb588098c7"
+                Port: 443
+
+    ElasticLoadBalancingV2TargetGroup3:
+        Type: "AWS::ElasticLoadBalancingV2::TargetGroup"
+        Properties:
+            HealthCheckIntervalSeconds: 30
+            HealthCheckPath: "/"
+            Port: 80
+            Protocol: "HTTP"
+            HealthCheckPort: "traffic-port"
+            HealthCheckProtocol: "HTTP"
+            HealthCheckTimeoutSeconds: 5
+            UnhealthyThresholdCount: 2
+            TargetType: "instance"
+            Matcher: 
+                HttpCode: "200"
+            HealthyThresholdCount: 5
+            VpcId: "vpc-0ea0500e1dda4d85b"
+            Name: "http-group"
+            HealthCheckEnabled: true
+            TargetGroupAttributes: 
+              - 
+                Key: "target_group_health.unhealthy_state_routing.minimum_healthy_targets.count"
+                Value: "1"
+              - 
+                Key: "stickiness.enabled"
+                Value: "true"
+              - 
+                Key: "target_group_health.unhealthy_state_routing.minimum_healthy_targets.percentage"
+                Value: "off"
+              - 
+                Key: "deregistration_delay.timeout_seconds"
+                Value: "300"
+              - 
+                Key: "target_group_health.dns_failover.minimum_healthy_targets.count"
+                Value: "1"
+              - 
+                Key: "stickiness.app_cookie.cookie_name"
+                Value: ""
+              - 
+                Key: "stickiness.type"
+                Value: "lb_cookie"
+              - 
+                Key: "stickiness.lb_cookie.duration_seconds"
+                Value: "86400"
+              - 
+                Key: "slow_start.duration_seconds"
+                Value: "0"
+              - 
+                Key: "stickiness.app_cookie.duration_seconds"
+                Value: "86400"
+              - 
+                Key: "target_group_health.dns_failover.minimum_healthy_targets.percentage"
+                Value: "off"
+              - 
+                Key: "load_balancing.cross_zone.enabled"
+                Value: "use_load_balancer_configuration"
+              - 
+                Key: "load_balancing.algorithm.type"
+                Value: "round_robin"
+            Targets: 
+              - 
+                Id: !Ref EC2Instance8
+                Port: 80
+              - 
+                Id: "i-0a7bd5bdb588098c7"
+                Port: 80
+
+    ElasticLoadBalancingV2TargetGroup4:
+        Type: "AWS::ElasticLoadBalancingV2::TargetGroup"
+        Properties:
+            HealthCheckIntervalSeconds: 30
+            HealthCheckPath: "/"
+            Port: 80
+            Protocol: "HTTP"
+            HealthCheckPort: "traffic-port"
+            HealthCheckProtocol: "HTTP"
+            HealthCheckTimeoutSeconds: 5
+            UnhealthyThresholdCount: 2
+            TargetType: "instance"
+            Matcher: 
+                HttpCode: "200"
+            HealthyThresholdCount: 5
+            VpcId: "vpc-0ea0500e1dda4d85b"
+            Name: "admin-page"
+            HealthCheckEnabled: true
+            TargetGroupAttributes: 
+              - 
+                Key: "target_group_health.unhealthy_state_routing.minimum_healthy_targets.count"
+                Value: "1"
+              - 
+                Key: "stickiness.enabled"
+                Value: "false"
+              - 
+                Key: "target_group_health.unhealthy_state_routing.minimum_healthy_targets.percentage"
+                Value: "off"
+              - 
+                Key: "deregistration_delay.timeout_seconds"
+                Value: "300"
+              - 
+                Key: "target_group_health.dns_failover.minimum_healthy_targets.count"
+                Value: "1"
+              - 
+                Key: "stickiness.app_cookie.cookie_name"
+                Value: ""
+              - 
+                Key: "stickiness.type"
+                Value: "lb_cookie"
+              - 
+                Key: "stickiness.lb_cookie.duration_seconds"
+                Value: "86400"
+              - 
+                Key: "slow_start.duration_seconds"
+                Value: "0"
+              - 
+                Key: "stickiness.app_cookie.duration_seconds"
+                Value: "86400"
+              - 
+                Key: "target_group_health.dns_failover.minimum_healthy_targets.percentage"
+                Value: "off"
+              - 
+                Key: "load_balancing.cross_zone.enabled"
+                Value: "use_load_balancer_configuration"
+              - 
+                Key: "load_balancing.algorithm.type"
+                Value: "round_robin"
+            Targets: 
+              - 
+                Id: "i-03be054e44220d3d6"
+                Port: 80
+              - 
+                Id: "i-02e33be739e955e4a"
+                Port: 80
+
+    EC2SecurityGroup:
+        Type: "AWS::EC2::SecurityGroup"
+        Properties:
+            GroupDescription: "launch-wizard-5 created 2023-09-14T00:15:29.237Z"
+            GroupName: "launch-wizard-5"
+            VpcId: "vpc-0ea0500e1dda4d85b"
+            SecurityGroupIngress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 80
+                IpProtocol: "tcp"
+                ToPort: 80
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 22
+                IpProtocol: "tcp"
+                ToPort: 22
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 443
+                IpProtocol: "tcp"
+                ToPort: 443
+            SecurityGroupEgress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                IpProtocol: "-1"
+
+    EC2SecurityGroup2:
+        Type: "AWS::EC2::SecurityGroup"
+        Properties:
+            GroupDescription: "launch-wizard-1 created 2023-03-31T09:30:50.522Z"
+            GroupName: "launch-wizard-1"
+            Tags: 
+              - 
+                Key: "Name"
+                Value: "Api-gateway-Eureka-rules"
+            VpcId: "vpc-0ea0500e1dda4d85b"
+            SecurityGroupIngress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 8080
+                IpProtocol: "tcp"
+                ToPort: 8080
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 8761
+                IpProtocol: "tcp"
+                ToPort: 8761
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 22
+                IpProtocol: "tcp"
+                ToPort: 22
+            SecurityGroupEgress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                IpProtocol: "-1"
+
+    EC2SecurityGroup3:
+        Type: "AWS::EC2::SecurityGroup"
+        Properties:
+            GroupDescription: "launch-wizard-2 created 2023-03-31T10:28:16.880Z"
+            GroupName: "launch-wizard-2"
+            Tags: 
+              - 
+                Key: "Name"
+                Value: "Global-instance-rules"
+            VpcId: "vpc-0ea0500e1dda4d85b"
+            SecurityGroupIngress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 8888
+                IpProtocol: "tcp"
+                ToPort: 8888
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 22
+                IpProtocol: "tcp"
+                ToPort: 22
+              - 
+                CidrIp: "0.0.0.0/0"
+                Description: "zookeeper"
+                FromPort: 2181
+                IpProtocol: "tcp"
+                ToPort: 2181
+              - 
+                CidrIp: "0.0.0.0/0"
+                Description: "kafka"
+                FromPort: 9092
+                IpProtocol: "tcp"
+                ToPort: 9092
+            SecurityGroupEgress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                IpProtocol: "-1"
+
+    EC2SecurityGroup4:
+        Type: "AWS::EC2::SecurityGroup"
+        Properties:
+            GroupDescription: "launch-wizard-3 created 2023-09-13T13:04:35.131Z"
+            GroupName: "launch-wizard-3"
+            VpcId: "vpc-0ea0500e1dda4d85b"
+            SecurityGroupIngress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 80
+                IpProtocol: "tcp"
+                ToPort: 80
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 22
+                IpProtocol: "tcp"
+                ToPort: 22
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 443
+                IpProtocol: "tcp"
+                ToPort: 443
+            SecurityGroupEgress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                IpProtocol: "-1"
+
+    EC2SecurityGroup5:
+        Type: "AWS::EC2::SecurityGroup"
+        Properties:
+            GroupDescription: "This security group was generated by AWS Marketplace and is based on recommended settings for CentOS 7 (x86_64) - with Updates HVM version CentOS-7.2009-20220825.1 provided by Amazon Web Services"
+            GroupName: "CentOS 7 (x86_64) - with Updates HVM-CentOS-7.2009-20220825.1-AutogenByAWSMP--1"
+            VpcId: "vpc-0ea0500e1dda4d85b"
+            SecurityGroupIngress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 80
+                IpProtocol: "tcp"
+                ToPort: 80
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 8080
+                IpProtocol: "tcp"
+                ToPort: 8080
+              - 
+                CidrIp: "0.0.0.0/0"
+                Description: "eureka-port"
+                FromPort: 8761
+                IpProtocol: "tcp"
+                ToPort: 8761
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 22
+                IpProtocol: "tcp"
+                ToPort: 22
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 443
+                IpProtocol: "tcp"
+                ToPort: 443
+            SecurityGroupEgress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                IpProtocol: "-1"
+
+    EC2SecurityGroup6:
+        Type: "AWS::EC2::SecurityGroup"
+        Properties:
+            GroupDescription: "launch-wizard-6 created 2023-09-14T00:18:04.440Z"
+            GroupName: "launch-wizard-6"
+            VpcId: "vpc-0ea0500e1dda4d85b"
+            SecurityGroupIngress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 80
+                IpProtocol: "tcp"
+                ToPort: 80
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 22
+                IpProtocol: "tcp"
+                ToPort: 22
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 443
+                IpProtocol: "tcp"
+                ToPort: 443
+            SecurityGroupEgress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                IpProtocol: "-1"
+
+    EC2SecurityGroup7:
+        Type: "AWS::EC2::SecurityGroup"
+        Properties:
+            GroupDescription: "launch-wizard-4 created 2023-09-14T00:06:56.497Z"
+            GroupName: "launch-wizard-4"
+            VpcId: "vpc-0ea0500e1dda4d85b"
+            SecurityGroupIngress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 80
+                IpProtocol: "tcp"
+                ToPort: 80
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 22
+                IpProtocol: "tcp"
+                ToPort: 22
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 443
+                IpProtocol: "tcp"
+                ToPort: 443
+            SecurityGroupEgress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                IpProtocol: "-1"
+
+    EC2SecurityGroup8:
+        Type: "AWS::EC2::SecurityGroup"
+        Properties:
+            GroupDescription: "8080 Port Open Groups for Service Instances"
+            GroupName: "prod-service-group"
+            VpcId: "vpc-0ea0500e1dda4d85b"
+            SecurityGroupIngress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 8080
+                IpProtocol: "tcp"
+                ToPort: 8080
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 22
+                IpProtocol: "tcp"
+                ToPort: 22
+            SecurityGroupEgress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                IpProtocol: "-1"
+
+    EC2SecurityGroup9:
+        Type: "AWS::EC2::SecurityGroup"
+        Properties:
+            GroupDescription: "all"
+            GroupName: "all"
+            VpcId: "vpc-0ea0500e1dda4d85b"
+            SecurityGroupIngress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                IpProtocol: "-1"
+            SecurityGroupEgress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                IpProtocol: "-1"
+
+    EC2SecurityGroup10:
+        Type: "AWS::EC2::SecurityGroup"
+        Properties:
+            GroupDescription: "FE Server for Development"
+            GroupName: "FE-DEV"
+            Tags: 
+              - 
+                Key: "Name"
+                Value: "FE-DEV"
+            VpcId: "vpc-0ea0500e1dda4d85b"
+            SecurityGroupIngress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 80
+                IpProtocol: "tcp"
+                ToPort: 80
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 22
+                IpProtocol: "tcp"
+                ToPort: 22
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 3000
+                IpProtocol: "tcp"
+                ToPort: 3000
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 443
+                IpProtocol: "tcp"
+                ToPort: 443
+              - 
+                CidrIpv6: "::/0"
+                FromPort: 443
+                IpProtocol: "tcp"
+                ToPort: 443
+            SecurityGroupEgress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                IpProtocol: "-1"
+
+    EC2SecurityGroup11:
+        Type: "AWS::EC2::SecurityGroup"
+        Properties:
+            GroupDescription: "Secret-group fro ELB"
+            GroupName: "LoadBalancer"
+            VpcId: "vpc-0ea0500e1dda4d85b"
+            SecurityGroupIngress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 81
+                IpProtocol: "tcp"
+                ToPort: 81
+              - 
+                CidrIpv6: "::/0"
+                FromPort: 81
+                IpProtocol: "tcp"
+                ToPort: 81
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 80
+                IpProtocol: "tcp"
+                ToPort: 80
+              - 
+                CidrIpv6: "::/0"
+                FromPort: 80
+                IpProtocol: "tcp"
+                ToPort: 80
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 444
+                IpProtocol: "tcp"
+                ToPort: 444
+              - 
+                CidrIpv6: "::/0"
+                FromPort: 444
+                IpProtocol: "tcp"
+                ToPort: 444
+              - 
+                CidrIp: "0.0.0.0/0"
+                FromPort: 443
+                IpProtocol: "tcp"
+                ToPort: 443
+              - 
+                CidrIpv6: "::/0"
+                FromPort: 443
+                IpProtocol: "tcp"
+                ToPort: 443
+            SecurityGroupEgress: 
+              - 
+                CidrIp: "0.0.0.0/0"
+                IpProtocol: "-1"
+
+    EC2Volume:
+        Type: "AWS::EC2::Volume"
+        Properties:
+            AvailabilityZone: !GetAtt EC2Instance2.AvailabilityZone
+            Encrypted: false
+            Size: 30
+            VolumeType: "gp2"
+            SnapshotId: "snap-09b4c533ece1689cd"
+            MultiAttachEnabled: false
+
+    EC2Volume2:
+        Type: "AWS::EC2::Volume"
+        Properties:
+            AvailabilityZone: !GetAtt EC2Instance2.AvailabilityZone
+            Encrypted: false
+            Size: 30
+            VolumeType: "gp2"
+            SnapshotId: "snap-09b4c533ece1689cd"
+            MultiAttachEnabled: false
+
+    EC2Volume3:
+        Type: "AWS::EC2::Volume"
+        Properties:
+            AvailabilityZone: !GetAtt EC2Instance2.AvailabilityZone
+            Encrypted: false
+            Size: 30
+            VolumeType: "gp2"
+            SnapshotId: "snap-09b4c533ece1689cd"
+            MultiAttachEnabled: false
+
+    EC2Volume4:
+        Type: "AWS::EC2::Volume"
+        Properties:
+            AvailabilityZone: !GetAtt EC2Instance2.AvailabilityZone
+            Encrypted: false
+            Size: 30
+            VolumeType: "gp2"
+            SnapshotId: "snap-09b4c533ece1689cd"
+            MultiAttachEnabled: false
+
+    EC2Volume5:
+        Type: "AWS::EC2::Volume"
+        Properties:
+            AvailabilityZone: !GetAtt EC2Instance2.AvailabilityZone
+            Encrypted: false
+            Size: 30
+            VolumeType: "gp2"
+            SnapshotId: "snap-09b4c533ece1689cd"
+            MultiAttachEnabled: false
+
+    EC2Volume6:
+        Type: "AWS::EC2::Volume"
+        Properties:
+            AvailabilityZone: !GetAtt EC2Instance2.AvailabilityZone
+            Encrypted: false
+            Size: 8
+            VolumeType: "gp2"
+            SnapshotId: "snap-09b4c533ece1689cd"
+            MultiAttachEnabled: false
+
+    EC2Volume7:
+        Type: "AWS::EC2::Volume"
+        Properties:
+            AvailabilityZone: !GetAtt EC2Instance2.AvailabilityZone
+            Encrypted: false
+            Size: 30
+            VolumeType: "gp2"
+            SnapshotId: "snap-09b4c533ece1689cd"
+            MultiAttachEnabled: false
+
+    EC2Volume8:
+        Type: "AWS::EC2::Volume"
+        Properties:
+            AvailabilityZone: !GetAtt EC2Instance2.AvailabilityZone
+            Encrypted: false
+            Size: 30
+            VolumeType: "gp2"
+            SnapshotId: "snap-09b4c533ece1689cd"
+            MultiAttachEnabled: false
+
+    EC2Volume9:
+        Type: "AWS::EC2::Volume"
+        Properties:
+            AvailabilityZone: !GetAtt EC2Instance2.AvailabilityZone
+            Encrypted: false
+            Size: 30
+            VolumeType: "gp2"
+            SnapshotId: "snap-09b4c533ece1689cd"
+            MultiAttachEnabled: false
+
+    EC2Volume10:
+        Type: "AWS::EC2::Volume"
+        Properties:
+            AvailabilityZone: !GetAtt EC2Instance.AvailabilityZone
+            Encrypted: false
+            Size: 30
+            VolumeType: "gp2"
+            SnapshotId: "snap-09b4c533ece1689cd"
+            MultiAttachEnabled: false
+
+    EC2VolumeAttachment:
+        Type: "AWS::EC2::VolumeAttachment"
+        Properties:
+            VolumeId: !Ref EC2Volume
+            InstanceId: !Ref EC2Instance10
+            Device: "/dev/sda1"
+
+    EC2VolumeAttachment2:
+        Type: "AWS::EC2::VolumeAttachment"
+        Properties:
+            VolumeId: !Ref EC2Volume2
+            InstanceId: !Ref EC2Instance6
+            Device: "/dev/sda1"
+
+    EC2VolumeAttachment3:
+        Type: "AWS::EC2::VolumeAttachment"
+        Properties:
+            VolumeId: !Ref EC2Volume3
+            InstanceId: !Ref EC2Instance9
+            Device: "/dev/sda1"
+
+    EC2VolumeAttachment4:
+        Type: "AWS::EC2::VolumeAttachment"
+        Properties:
+            VolumeId: !Ref EC2Volume4
+            InstanceId: !Ref EC2Instance2
+            Device: "/dev/sda1"
+
+    EC2VolumeAttachment5:
+        Type: "AWS::EC2::VolumeAttachment"
+        Properties:
+            VolumeId: !Ref EC2Volume5
+            InstanceId: !Ref EC2Instance4
+            Device: "/dev/sda1"
+
+    EC2VolumeAttachment6:
+        Type: "AWS::EC2::VolumeAttachment"
+        Properties:
+            VolumeId: !Ref EC2Volume6
+            InstanceId: !Ref EC2Instance8
+            Device: "/dev/sda1"
+
+    EC2VolumeAttachment7:
+        Type: "AWS::EC2::VolumeAttachment"
+        Properties:
+            VolumeId: !Ref EC2Volume7
+            InstanceId: !Ref EC2Instance3
+            Device: "/dev/sda1"
+
+    EC2VolumeAttachment8:
+        Type: "AWS::EC2::VolumeAttachment"
+        Properties:
+            VolumeId: !Ref EC2Volume8
+            InstanceId: !Ref EC2Instance5
+            Device: "/dev/sda1"
+
+    EC2VolumeAttachment9:
+        Type: "AWS::EC2::VolumeAttachment"
+        Properties:
+            VolumeId: !Ref EC2Volume9
+            InstanceId: !Ref EC2Instance7
+            Device: "/dev/sda1"
+
+    EC2VolumeAttachment10:
+        Type: "AWS::EC2::VolumeAttachment"
+        Properties:
+            VolumeId: !Ref EC2Volume10
+            InstanceId: !Ref EC2Instance
+            Device: "/dev/sda1"
+
+    EC2NetworkInterface:
+        Type: "AWS::EC2::NetworkInterface"
+        Properties:
+            Description: ""
+            PrivateIpAddress: !GetAtt EC2Instance7.PrivateIp
+            PrivateIpAddresses: 
+              - 
+                PrivateIpAddress: !GetAtt EC2Instance7.PrivateIp
+                Primary: true
+            SubnetId: "subnet-02174c2714aedd080"
+            SourceDestCheck: true
+            GroupSet: 
+              - !Ref EC2SecurityGroup9
+
+    EC2NetworkInterface2:
+        Type: "AWS::EC2::NetworkInterface"
+        Properties:
+            Description: ""
+            PrivateIpAddress: "172.31.47.161"
+            PrivateIpAddresses: 
+              - 
+                PrivateIpAddress: "172.31.47.161"
+                Primary: true
+            SubnetId: "subnet-02174c2714aedd080"
+            SourceDestCheck: true
+            GroupSet: 
+              - !Ref EC2SecurityGroup8
+
+    EC2NetworkInterface3:
+        Type: "AWS::EC2::NetworkInterface"
+        Properties:
+            Description: !Sub "ELB app/${ElasticLoadBalancingV2LoadBalancer.LoadBalancerName}/091c9dc7b00ccec2"
+            PrivateIpAddress: "172.31.8.234"
+            PrivateIpAddresses: 
+              - 
+                PrivateIpAddress: "172.31.8.234"
+                Primary: true
+            SubnetId: "subnet-0d1bec8ee5e597576"
+            SourceDestCheck: true
+            GroupSet: 
+              - !Sub "${ElasticLoadBalancingV2LoadBalancer.SecurityGroups}"
+
+    EC2NetworkInterface4:
+        Type: "AWS::EC2::NetworkInterface"
+        Properties:
+            Description: ""
+            PrivateIpAddress: !GetAtt EC2Instance10.PrivateIp
+            PrivateIpAddresses: 
+              - 
+                PrivateIpAddress: !GetAtt EC2Instance10.PrivateIp
+                Primary: true
+            SubnetId: "subnet-02174c2714aedd080"
+            SourceDestCheck: true
+            GroupSet: 
+              - !Ref EC2SecurityGroup9
+
+    EC2NetworkInterface5:
+        Type: "AWS::EC2::NetworkInterface"
+        Properties:
+            Description: ""
+            PrivateIpAddress: "172.31.38.118"
+            PrivateIpAddresses: 
+              - 
+                PrivateIpAddress: "172.31.38.118"
+                Primary: true
+            SubnetId: "subnet-02174c2714aedd080"
+            SourceDestCheck: true
+            GroupSet: 
+              - !Ref EC2SecurityGroup5
+
+    EC2NetworkInterface6:
+        Type: "AWS::EC2::NetworkInterface"
+        Properties:
+            Description: ""
+            PrivateIpAddress: "172.31.45.164"
+            PrivateIpAddresses: 
+              - 
+                PrivateIpAddress: "172.31.45.164"
+                Primary: true
+            SubnetId: "subnet-02174c2714aedd080"
+            SourceDestCheck: true
+            GroupSet: 
+              - !Ref EC2SecurityGroup2
+
+    EC2NetworkInterface7:
+        Type: "AWS::EC2::NetworkInterface"
+        Properties:
+            Description: ""
+            PrivateIpAddress: !GetAtt EC2Instance6.PrivateIp
+            PrivateIpAddresses: 
+              - 
+                PrivateIpAddress: !GetAtt EC2Instance6.PrivateIp
+                Primary: true
+            SubnetId: "subnet-02174c2714aedd080"
+            SourceDestCheck: true
+            GroupSet: 
+              - !Ref EC2SecurityGroup9
+
+    EC2NetworkInterface8:
+        Type: "AWS::EC2::NetworkInterface"
+        Properties:
+            Description: ""
+            PrivateIpAddress: !GetAtt EC2Instance8.PrivateIp
+            PrivateIpAddresses: 
+              - 
+                PrivateIpAddress: !GetAtt EC2Instance8.PrivateIp
+                Primary: true
+            SubnetId: "subnet-02174c2714aedd080"
+            SourceDestCheck: true
+            GroupSet: 
+              - !Ref EC2SecurityGroup10
+
+    EC2NetworkInterface9:
+        Type: "AWS::EC2::NetworkInterface"
+        Properties:
+            Description: ""
+            PrivateIpAddress: !GetAtt EC2Instance4.PrivateIp
+            PrivateIpAddresses: 
+              - 
+                PrivateIpAddress: !GetAtt EC2Instance4.PrivateIp
+                Primary: true
+            SubnetId: "subnet-02174c2714aedd080"
+            SourceDestCheck: true
+            GroupSet: 
+              - !Ref EC2SecurityGroup9
+
+    EC2NetworkInterface10:
+        Type: "AWS::EC2::NetworkInterface"
+        Properties:
+            Description: ""
+            PrivateIpAddress: !GetAtt EC2Instance.PrivateIp
+            PrivateIpAddresses: 
+              - 
+                PrivateIpAddress: !GetAtt EC2Instance.PrivateIp
+                Primary: true
+            SubnetId: "subnet-0d1bec8ee5e597576"
+            SourceDestCheck: true
+            GroupSet: 
+              - !Ref EC2SecurityGroup9
+
+    EC2NetworkInterface11:
+        Type: "AWS::EC2::NetworkInterface"
+        Properties:
+            Description: ""
+            PrivateIpAddress: "172.31.42.254"
+            PrivateIpAddresses: 
+              - 
+                PrivateIpAddress: "172.31.42.254"
+                Primary: true
+            SubnetId: "subnet-02174c2714aedd080"
+            SourceDestCheck: true
+            GroupSet: 
+              - !Ref EC2SecurityGroup10
+
+    EC2NetworkInterface12:
+        Type: "AWS::EC2::NetworkInterface"
+        Properties:
+            Description: ""
+            PrivateIpAddress: "172.31.38.68"
+            PrivateIpAddresses: 
+              - 
+                PrivateIpAddress: "172.31.38.68"
+                Primary: true
+            SubnetId: "subnet-02174c2714aedd080"
+            SourceDestCheck: true
+            GroupSet: 
+              - !Ref EC2SecurityGroup3
+
+    EC2NetworkInterface13:
+        Type: "AWS::EC2::NetworkInterface"
+        Properties:
+            Description: ""
+            PrivateIpAddress: !GetAtt EC2Instance3.PrivateIp
+            PrivateIpAddresses: 
+              - 
+                PrivateIpAddress: !GetAtt EC2Instance3.PrivateIp
+                Primary: true
+            SubnetId: "subnet-02174c2714aedd080"
+            SourceDestCheck: true
+            GroupSet: 
+              - !Ref EC2SecurityGroup9
+
+    EC2NetworkInterface14:
+        Type: "AWS::EC2::NetworkInterface"
+        Properties:
+            Description: !Sub "ELB app/${ElasticLoadBalancingV2LoadBalancer.LoadBalancerName}/091c9dc7b00ccec2"
+            PrivateIpAddress: "172.31.32.200"
+            PrivateIpAddresses: 
+              - 
+                PrivateIpAddress: "172.31.32.200"
+                Primary: true
+            SubnetId: "subnet-02174c2714aedd080"
+            SourceDestCheck: true
+            GroupSet: 
+              - !Sub "${ElasticLoadBalancingV2LoadBalancer.SecurityGroups}"
+
+    EC2NetworkInterface15:
+        Type: "AWS::EC2::NetworkInterface"
+        Properties:
+            Description: ""
+            PrivateIpAddress: "172.31.38.157"
+            PrivateIpAddresses: 
+              - 
+                PrivateIpAddress: "172.31.38.157"
+                Primary: true
+            SubnetId: "subnet-02174c2714aedd080"
+            SourceDestCheck: true
+            GroupSet: 
+              - !Ref EC2SecurityGroup8
+
+    EC2NetworkInterface16:
+        Type: "AWS::EC2::NetworkInterface"
+        Properties:
+            Description: ""
+            PrivateIpAddress: !GetAtt EC2Instance5.PrivateIp
+            PrivateIpAddresses: 
+              - 
+                PrivateIpAddress: !GetAtt EC2Instance5.PrivateIp
+                Primary: true
+            SubnetId: "subnet-02174c2714aedd080"
+            SourceDestCheck: true
+            GroupSet: 
+              - !Ref EC2SecurityGroup9
+
+    EC2NetworkInterface17:
+        Type: "AWS::EC2::NetworkInterface"
+        Properties:
+            Description: ""
+            PrivateIpAddress: !GetAtt EC2Instance2.PrivateIp
+            PrivateIpAddresses: 
+              - 
+                PrivateIpAddress: !GetAtt EC2Instance2.PrivateIp
+                Primary: true
+            SubnetId: "subnet-02174c2714aedd080"
+            SourceDestCheck: true
+            GroupSet: 
+              - !Ref EC2SecurityGroup9
+
+    EC2NetworkInterface18:
+        Type: "AWS::EC2::NetworkInterface"
+        Properties:
+            Description: ""
+            PrivateIpAddress: "172.31.33.59"
+            PrivateIpAddresses: 
+              - 
+                PrivateIpAddress: "172.31.33.59"
+                Primary: true
+            SubnetId: "subnet-02174c2714aedd080"
+            SourceDestCheck: true
+            GroupSet: 
+              - !Ref EC2SecurityGroup8
+
+    EC2NetworkInterface19:
+        Type: "AWS::EC2::NetworkInterface"
+        Properties:
+            Description: ""
+            PrivateIpAddress: !GetAtt EC2Instance9.PrivateIp
+            PrivateIpAddresses: 
+              - 
+                PrivateIpAddress: !GetAtt EC2Instance9.PrivateIp
+                Primary: true
+            SubnetId: "subnet-02174c2714aedd080"
+            SourceDestCheck: true
+            GroupSet: 
+              - !Ref EC2SecurityGroup9
+
+    EC2NetworkInterface20:
+        Type: "AWS::EC2::NetworkInterface"
+        Properties:
+            Description: ""
+            PrivateIpAddress: "172.31.44.28"
+            PrivateIpAddresses: 
+              - 
+                PrivateIpAddress: "172.31.44.28"
+                Primary: true
+            SubnetId: "subnet-02174c2714aedd080"
+            SourceDestCheck: true
+            GroupSet: 
+              - !Ref EC2SecurityGroup9
+
+    EC2NetworkInterfaceAttachment:
+        Type: "AWS::EC2::NetworkInterfaceAttachment"
+        Properties:
+            NetworkInterfaceId: "eni-06b3d883f2e65e135"
+            DeviceIndex: 0
+            InstanceId: !Ref EC2Instance7
+            DeleteOnTermination: true
+
+    EC2NetworkInterfaceAttachment2:
+        Type: "AWS::EC2::NetworkInterfaceAttachment"
+        Properties:
+            NetworkInterfaceId: "eni-034094607dc795968"
+            DeviceIndex: 0
+            InstanceId: "i-0572a1b158779c3ff"
+            DeleteOnTermination: true
+
+    EC2NetworkInterfaceAttachment3:
+        Type: "AWS::EC2::NetworkInterfaceAttachment"
+        Properties:
+            NetworkInterfaceId: "eni-05a7fcc0fb2b9f547"
+            DeviceIndex: 0
+            InstanceId: !Ref EC2Instance10
+            DeleteOnTermination: true
+
+    EC2NetworkInterfaceAttachment4:
+        Type: "AWS::EC2::NetworkInterfaceAttachment"
+        Properties:
+            NetworkInterfaceId: "eni-091724cec65505141"
+            DeviceIndex: 0
+            InstanceId: "i-0b60cb09676e14504"
+            DeleteOnTermination: true
+
+    EC2NetworkInterfaceAttachment5:
+        Type: "AWS::EC2::NetworkInterfaceAttachment"
+        Properties:
+            NetworkInterfaceId: "eni-073828917ffd3246f"
+            DeviceIndex: 0
+            InstanceId: "i-02eba91498cff1643"
+            DeleteOnTermination: true
+
+    EC2NetworkInterfaceAttachment6:
+        Type: "AWS::EC2::NetworkInterfaceAttachment"
+        Properties:
+            NetworkInterfaceId: "eni-0aa18f96f5c3df141"
+            DeviceIndex: 0
+            InstanceId: !Ref EC2Instance6
+            DeleteOnTermination: true
+
+    EC2NetworkInterfaceAttachment7:
+        Type: "AWS::EC2::NetworkInterfaceAttachment"
+        Properties:
+            NetworkInterfaceId: "eni-03b17038770ac05e7"
+            DeviceIndex: 0
+            InstanceId: !Ref EC2Instance8
+            DeleteOnTermination: true
+
+    EC2NetworkInterfaceAttachment8:
+        Type: "AWS::EC2::NetworkInterfaceAttachment"
+        Properties:
+            NetworkInterfaceId: "eni-072da824c77f89e27"
+            DeviceIndex: 0
+            InstanceId: !Ref EC2Instance4
+            DeleteOnTermination: true
+
+    EC2NetworkInterfaceAttachment9:
+        Type: "AWS::EC2::NetworkInterfaceAttachment"
+        Properties:
+            NetworkInterfaceId: "eni-02c4f98e49d09665a"
+            DeviceIndex: 0
+            InstanceId: !Ref EC2Instance
+            DeleteOnTermination: true
+
+    EC2NetworkInterfaceAttachment10:
+        Type: "AWS::EC2::NetworkInterfaceAttachment"
+        Properties:
+            NetworkInterfaceId: "eni-0d60d65f11dcecd74"
+            DeviceIndex: 0
+            InstanceId: "i-02e33be739e955e4a"
+            DeleteOnTermination: true
+
+    EC2NetworkInterfaceAttachment11:
+        Type: "AWS::EC2::NetworkInterfaceAttachment"
+        Properties:
+            NetworkInterfaceId: "eni-0748064bfbb2ff22e"
+            DeviceIndex: 0
+            InstanceId: "i-0166e4f6d1f553767"
+            DeleteOnTermination: true
+
+    EC2NetworkInterfaceAttachment12:
+        Type: "AWS::EC2::NetworkInterfaceAttachment"
+        Properties:
+            NetworkInterfaceId: "eni-050179faa557e3856"
+            DeviceIndex: 0
+            InstanceId: !Ref EC2Instance3
+            DeleteOnTermination: true
+
+    EC2NetworkInterfaceAttachment13:
+        Type: "AWS::EC2::NetworkInterfaceAttachment"
+        Properties:
+            NetworkInterfaceId: "eni-072c3dbce06fb26f2"
+            DeviceIndex: 0
+            InstanceId: "i-0d5299f0a78e2610f"
+            DeleteOnTermination: true
+
+    EC2NetworkInterfaceAttachment14:
+        Type: "AWS::EC2::NetworkInterfaceAttachment"
+        Properties:
+            NetworkInterfaceId: "eni-03ea77fa0577326d1"
+            DeviceIndex: 0
+            InstanceId: !Ref EC2Instance5
+            DeleteOnTermination: true
+
+    EC2NetworkInterfaceAttachment15:
+        Type: "AWS::EC2::NetworkInterfaceAttachment"
+        Properties:
+            NetworkInterfaceId: "eni-092530929455853aa"
+            DeviceIndex: 0
+            InstanceId: !Ref EC2Instance2
+            DeleteOnTermination: true
+
+    EC2NetworkInterfaceAttachment16:
+        Type: "AWS::EC2::NetworkInterfaceAttachment"
+        Properties:
+            NetworkInterfaceId: "eni-0e69ab8659be73bc8"
+            DeviceIndex: 0
+            InstanceId: "i-096382f227ae6c9d4"
+            DeleteOnTermination: true
+
+    EC2NetworkInterfaceAttachment17:
+        Type: "AWS::EC2::NetworkInterfaceAttachment"
+        Properties:
+            NetworkInterfaceId: "eni-043ecd924546146d9"
+            DeviceIndex: 0
+            InstanceId: !Ref EC2Instance9
+            DeleteOnTermination: true
+
+    EC2NetworkInterfaceAttachment18:
+        Type: "AWS::EC2::NetworkInterfaceAttachment"
+        Properties:
+            NetworkInterfaceId: "eni-02f0c4482dc5046d3"
+            DeviceIndex: 0
+            InstanceId: "i-0a7bd5bdb588098c7"
+            DeleteOnTermination: true
+
+    EC2KeyPair:
+        Type: "AWS::EC2::KeyPair"
+        Properties:
+            KeyName: "api-gateway-eureka-dev"
+            KeyType: "rsa"
+
+    EC2KeyPair2:
+        Type: "AWS::EC2::KeyPair"
+        Properties:
+            KeyName: "global-instance"
+            KeyType: "rsa"
+
+    EC2KeyPair3:
+        Type: "AWS::EC2::KeyPair"
+        Properties:
+            KeyName: "JenkinsOMNMKeyPair"
+            KeyType: "rsa"
+
+    EC2KeyPair4:
+        Type: "AWS::EC2::KeyPair"
+        Properties:
+            KeyName: "auth-service"
+            KeyType: "rsa"
+
+    EC2KeyPair5:
+        Type: "AWS::EC2::KeyPair"
+        Properties:
+            KeyName: "front-end-dev"
+            KeyType: "rsa"
+
+    EC2KeyPair6:
+        Type: "AWS::EC2::KeyPair"
+        Properties:
+            KeyName: "product-service"
+            KeyType: "rsa"
+
+    EC2KeyPair7:
+        Type: "AWS::EC2::KeyPair"
+        Properties:
+            KeyName: "fe-admin"
+            KeyType: "rsa"
+
+    EC2KeyPair8:
+        Type: "AWS::EC2::KeyPair"
+        Properties:
+            KeyName: "admin-instance"
+            KeyType: "rsa"
+
+    EC2KeyPair9:
+        Type: "AWS::EC2::KeyPair"
+        Properties:
+            KeyName: "global-2"
+            KeyType: "rsa"
+
+    EC2EIP:
+        Type: "AWS::EC2::EIP"
+        Properties:
+            Domain: "vpc"
+            InstanceId: "i-0a7bd5bdb588098c7"
+
+    EC2EIPAssociation:
+        Type: "AWS::EC2::EIPAssociation"
+        Properties:
+            AllocationId: !GetAtt EC2EIP.AllocationId
+            InstanceId: "i-0a7bd5bdb588098c7"
+            NetworkInterfaceId: "eni-02f0c4482dc5046d3"
+            PrivateIpAddress: "172.31.44.28"
+
+    Route53HostedZone:
+        Type: "AWS::Route53::HostedZone"
+        Properties:
+            Name: !Ref Route53RecordSet
+
+    Route53RecordSet:
+        Type: "AWS::Route53::RecordSet"
+        Properties:
+            Name: !Ref Route53RecordSet2
+            Type: "A"
+            AliasTarget: 
+                HostedZoneId: !GetAtt ElasticLoadBalancingV2LoadBalancer.CanonicalHostedZoneID
+                DNSName: !Sub "dualstack.liberty52-lb-1731211295.${AWS::Region}.elb.amazonaws.com."
+                EvaluateTargetHealth: true
+            HostedZoneId: "Z06575413USXOGJGFQ1WW"
+
+    Route53RecordSet2:
+        Type: "AWS::Route53::RecordSet"
+        Properties:
+            Name: !Ref Route53RecordSet3
+            Type: "AAAA"
+            AliasTarget: 
+                HostedZoneId: !GetAtt ElasticLoadBalancingV2LoadBalancer.CanonicalHostedZoneID
+                DNSName: !Sub "dualstack.liberty52-lb-1731211295.${AWS::Region}.elb.amazonaws.com."
+                EvaluateTargetHealth: true
+            HostedZoneId: "Z06575413USXOGJGFQ1WW"
+
+    Route53RecordSet3:
+        Type: "AWS::Route53::RecordSet"
+        Properties:
+            Name: !Ref Route53RecordSet4
+            Type: "NS"
+            TTL: 172800
+            ResourceRecords: 
+              - "ns-649.awsdns-17.net."
+              - "ns-1665.awsdns-16.co.uk."
+              - "ns-1523.awsdns-62.org."
+              - "ns-48.awsdns-06.com."
+            HostedZoneId: "Z06575413USXOGJGFQ1WW"
+
+    Route53RecordSet4:
+        Type: "AWS::Route53::RecordSet"
+        Properties:
+            Name: "liberty52.com."
+            Type: "SOA"
+            TTL: 900
+            ResourceRecords: 
+              - "ns-649.awsdns-17.net. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400"
+            HostedZoneId: "Z06575413USXOGJGFQ1WW"
+
+    Route53RecordSet5:
+        Type: "AWS::Route53::RecordSet"
+        Properties:
+            Name: !Sub "admin.${Route53RecordSet}"
+            Type: "A"
+            AliasTarget: 
+                HostedZoneId: !GetAtt ElasticLoadBalancingV2LoadBalancer.CanonicalHostedZoneID
+                DNSName: !Sub "dualstack.liberty52-lb-1731211295.${AWS::Region}.elb.amazonaws.com."
+                EvaluateTargetHealth: true
+            HostedZoneId: !Ref Route53HostedZone
+
+    Route53RecordSet6:
+        Type: "AWS::Route53::RecordSet"
+        Properties:
+            Name: !Sub "admin.${Route53RecordSet}"
+            Type: "AAAA"
+            AliasTarget: 
+                HostedZoneId: !GetAtt ElasticLoadBalancingV2LoadBalancer.CanonicalHostedZoneID
+                DNSName: !Sub "dualstack.liberty52-lb-1731211295.${AWS::Region}.elb.amazonaws.com."
+                EvaluateTargetHealth: true
+            HostedZoneId: !Ref Route53HostedZone
+
+    IAMUser:
+        Type: "AWS::IAM::User"
+        Properties:
+            Path: "/"
+            UserName: "Liberty52-S3-Admin"
+            ManagedPolicyArns: 
+              - "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+
+    IAMServiceLinkedRole:
+        Type: "AWS::IAM::ServiceLinkedRole"
+        Properties:
+            AWSServiceName: "elasticloadbalancing.amazonaws.com"
+            Description: "Allows ELB to call AWS services on your behalf."
+
+    IAMServiceLinkedRole2:
+        Type: "AWS::IAM::ServiceLinkedRole"
+        Properties:
+            AWSServiceName: "globalaccelerator.amazonaws.com"
+            Description: "Allows Global Accelerator to call AWS services on customer's behalf"
+
+    IAMServiceLinkedRole3:
+        Type: "AWS::IAM::ServiceLinkedRole"
+        Properties:
+            AWSServiceName: "organizations.amazonaws.com"
+            Description: "Service-linked role used by AWS Organizations to enable integration of other AWS services with Organizations."
+
+    IAMAccessKey:
+        Type: "AWS::IAM::AccessKey"
+        Properties:
+            Status: "Active"
+            UserName: "Liberty52-S3-Admin"
+
+    IAMAccessKey2:
+        Type: "AWS::IAM::AccessKey"
+        Properties:
+            Status: "Active"
+            UserName: "former"
