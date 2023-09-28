@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product
+  labels:
+    tier: backend
+    app: product
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product
+  template:
+    metadata:
+      name: product
+      labels:
+        tier: backend
+        app: product
+    spec:
+#      initContainers:
+#        - name: init-ds
+#          image: busybox:latest
+#          command:
+#            - "/bin/sh"
+#            - "-c"
+#            - |
+#              while true
+#              do
+#                rt=$(nc -z -w 1 product-mariadb 3306)
+#                if [ $? -eq 0 ]; then
+#                  echo "DB is UP"
+#                  break
+#                fi
+#                echo "DB is not yet reachable;sleep for 10s before retry"
+#                sleep 10
+#              done
+      containers:
+        - name: product
+          image: ghcr.io/liberty52/liberty52-product-server:dev-v-2023.09.27-065117
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "200m"
+            limits:
+              memory: "3Gi"
+              cpu: "400m"
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 120
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+      restartPolicy: Always
