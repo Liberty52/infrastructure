@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: product
+  name: product-server
   labels:
     tier: backend
-    app: product
+    app: product-server
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: product
+      app: product-server
   template:
     metadata:
-      name: product
+      name: product-server
       labels:
         tier: backend
-        app: product
+        app: product-server
     spec:
 #      initContainers:
 #        - name: init-ds
@@ -35,7 +35,7 @@ spec:
 #                sleep 10
 #              done
       containers:
-        - name: product
+        - name: product-server
           image: ghcr.io/liberty52/liberty52-product-server:dev-v-2023.09.27-065117
           imagePullPolicy: IfNotPresent
           resources:
