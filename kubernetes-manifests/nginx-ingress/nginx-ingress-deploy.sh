@@ -1,0 +1,2 @@
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+kubectl delete ValidatingWebhookConfiguration.admissionregistration.k8s.io/ingress-nginx-admission
