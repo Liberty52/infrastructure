@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: config-server
   labels:
-#    tier: backend
+    tier: backend
     app: config-server
 spec:
   replicas: 1
@@ -14,39 +14,39 @@ spec:
     metadata:
       name: config-server
       labels:
-#        tier: backend
+        tier: backend
         app: config-server
     spec:
       containers:
         - name: config-server
           image: ghcr.io/liberty52/liberty52-config-server:dev-v0.6
-#          resources:
-#            limits:
-#              memory: "200Mi"
-#              cpu: "300m"
-#          startupProbe:
-#            httpGet:
-#              path: /actuator/health
-#              port: 8888
-#            initialDelaySeconds: 30
-#            periodSeconds: 10
-#            timeoutSeconds: 5
-#            failureThreshold: 3
-#          readinessProbe:
-#            httpGet:
-#              path: /actuator/health
-#              port: 8888
-#            initialDelaySeconds: 30
-#            periodSeconds: 10
-#            timeoutSeconds: 3
-#            failureThreshold: 3
-#          livenessProbe:
-#            httpGet:
-#              path: /actuator/health
-#              port: 8888
-#            initialDelaySeconds: 120
-#            periodSeconds: 10
-#            timeoutSeconds: 3
-#            failureThreshold: 3
+          resources:
+            limits:
+              memory: "200M"
+              cpu: "30m"
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8888
+            initialDelaySeconds: 50
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8888
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8888
+            initialDelaySeconds: 120
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
       imagePullSecrets:
         - name: ghcrcred
