@@ -21,32 +21,34 @@ spec:
         - name: config-server
           image: ghcr.io/liberty52/liberty52-config-server:dev-v0.1.2
           resources:
-            limits:
+            requests:
               memory: "200M"
-              cpu: "30m"
+              cpu: "400m"
+            limits:
+              memory: "250M"
+              cpu: "400m"
           startupProbe:
             httpGet:
               path: /actuator/health
               port: 8888
-            initialDelaySeconds: 50
-            periodSeconds: 10
-            timeoutSeconds: 5
-            failureThreshold: 3
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 15
+            failureThreshold: 4
           readinessProbe:
             httpGet:
               path: /actuator/health
               port: 8888
-            initialDelaySeconds: 30
-            periodSeconds: 10
-            timeoutSeconds: 3
-            failureThreshold: 3
+            periodSeconds: 15
+            timeoutSeconds: 15
+            failureThreshold: 7
           livenessProbe:
             httpGet:
               path: /actuator/health
               port: 8888
             initialDelaySeconds: 120
             periodSeconds: 10
-            timeoutSeconds: 3
+            timeoutSeconds: 15
             failureThreshold: 3
       imagePullSecrets:
         - name: ghcrcred
