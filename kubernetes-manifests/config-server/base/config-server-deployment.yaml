@@ -20,6 +20,7 @@ spec:
       containers:
         - name: config-server
           image: ghcr.io/liberty52/liberty52-config-server:dev-v0.1.2
+          imagePullPolicy: Always
           resources:
             requests:
               memory: "200M"
