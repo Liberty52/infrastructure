@@ -1,5 +1,3 @@
 resources:
   - ../base
-  - config-server-service-local.yaml
-
-namespace: dev
+  - config-server-service-dev.yaml
