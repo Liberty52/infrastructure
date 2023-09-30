@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: config-server
-          image: ghcr.io/liberty52/liberty52-config-server:dev-v0.6
+          image: ghcr.io/liberty52/liberty52-config-server:dev-v0.1.2
           resources:
             limits:
               memory: "200M"
