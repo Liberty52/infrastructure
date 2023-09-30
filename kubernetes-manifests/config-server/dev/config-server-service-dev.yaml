@@ -6,9 +6,11 @@ metadata:
     tier: backend
   name: config-server
 spec:
-  ports:
-  - port: 8888
-    protocol: TCP
-    targetPort: 8888
   selector:
+    tier: backend
     app: config-server
+  ports:
+    - protocol: TCP
+      port: 8888
+      targetPort: 8888
+  type: LoadBalancer
