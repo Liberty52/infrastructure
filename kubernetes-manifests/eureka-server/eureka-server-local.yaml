@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: local
+  name: eureka-server
+  labels:
+    app: eureka-server
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eureka-server
+      tier: backend
+  template:
+    metadata:
+      name: eureka-server
+      labels:
+        app: eureka-server
+        tier: backend
+    spec:
+      containers:
+        - name: eureka-server
+          image: ghcr.io/liberty52/liberty52-service-discovery:local
+          imagePullPolicy: IfNotPresent
+      imagePullSecrets:
+        - name: ghcrcred
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: local
+  labels:
+    app: eureka-server
+    tier: backend
+  name: eureka-server
+spec:
+  selector:
+    app: eureka-server
+    tier: backend
+  ports:
+    - protocol: TCP
+      port: 8761
+      targetPort: 8761
+  type: LoadBalancer

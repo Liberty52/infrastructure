@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: api-gateway
+  name: api-gateway
+spec:
+  imagePullSecrets:
+    - name: ghcrcred
+  containers:
+    - image: imkunyoung/liberty-gateway:test
+      name: api-gateway
+      resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: api-gateway
+  name: api-gateway
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  type: LoadBalancer
+  selector:
+    run: api-gateway

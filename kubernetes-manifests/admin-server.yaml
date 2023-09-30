@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: admin-server
+  name: admin-server
+spec:
+  imagePullSecrets:
+    - name: ghcrcred
+  containers:
+    - image: ghcr.io/liberty52/liberty52-admin-server:dev-v-2023.09.29-164554
+      name: admin-server
+      resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: admin-server
+  name: admin-server
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    run: admin-server

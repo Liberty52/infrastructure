@@ -24,3 +24,21 @@ spec:
       imagePullSecrets:
         - name: ghcrcred
       restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: admin-page
+  name: admin-page
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+  type: NodePort
+  selector:
+    tier: frontend
+    app: admin-page
