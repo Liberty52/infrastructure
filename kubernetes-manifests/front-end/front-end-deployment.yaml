@@ -35,10 +35,10 @@ metadata:
   name: front-end
 spec:
   ports:
-    - port: 81
+    - port: 80
       protocol: TCP
       targetPort: 80
-  type: NodePort
+  type: ClusterIP
   selector:
     tier: frontend
     app: front-end
