@@ -7,10 +7,6 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  tls:
-    - hosts:
-        - admin.liberty52.com
-      secretName: ingress-tls
   rules:
     - host: admin.liberty52.com
       http:

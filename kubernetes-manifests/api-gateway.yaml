@@ -8,7 +8,7 @@ spec:
   imagePullSecrets:
     - name: ghcrcred
   containers:
-    - image: imkunyoung/liberty-gateway:test
+    - image: imkunyoung/liberty-gateway:test3
       name: api-gateway
       resources: {}
   dnsPolicy: ClusterFirst
@@ -24,7 +24,7 @@ metadata:
   name: api-gateway
 spec:
   ports:
-    - port: 8080
+    - port: 80
       protocol: TCP
       targetPort: 8080
   type: ClusterIP
