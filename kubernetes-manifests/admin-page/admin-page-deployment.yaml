@@ -3,23 +3,24 @@ kind: Deployment
 metadata:
   name: admin-page
   labels:
-    tier: frontend
     app: admin-page
+    tier: frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: admin-page
+      tier: frontend
   template:
     metadata:
       name: admin-page
       labels:
-        tier: frontend
         app: admin-page
+        tier: frontend
     spec:
       containers:
         - name: admin-page
-          image: ghcr.io/liberty52/liberty52-admin-page:dev-v-2023.09.27-095408
+          image: ghcr.io/liberty52/liberty52-admin-page:dev-v-2023.10.02-054658
           imagePullPolicy: IfNotPresent
       imagePullSecrets:
         - name: ghcrcred
@@ -31,7 +32,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    run: admin-page
+    app: admin-page
+    tier: frontend
   name: admin-page
 spec:
   ports:
@@ -40,5 +42,5 @@ spec:
       targetPort: 80
   type: ClusterIP
   selector:
-    tier: frontend
     app: admin-page
+    tier: frontend

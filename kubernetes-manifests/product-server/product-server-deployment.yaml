@@ -3,40 +3,24 @@ kind: Deployment
 metadata:
   name: product-server
   labels:
-    tier: backend
     app: product-server
+    tier: backend
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: product-server
+      tier: backend
   template:
     metadata:
       name: product-server
       labels:
-        tier: backend
         app: product-server
+        tier: backend
     spec:
-#      initContainers:
-#        - name: init-ds
-#          image: busybox:latest
-#          command:
-#            - "/bin/sh"
-#            - "-c"
-#            - |
-#              while true
-#              do
-#                rt=$(nc -z -w 1 product-mariadb 3306)
-#                if [ $? -eq 0 ]; then
-#                  echo "DB is UP"
-#                  break
-#                fi
-#                echo "DB is not yet reachable;sleep for 10s before retry"
-#                sleep 10
-#              done
       containers:
         - name: product-server
-          image: ghcr.io/liberty52/liberty52-product-server:dev-v-2023.09.27-065117
+          image: ghcr.io/liberty52/liberty52-product-server:dev-v-2023.10.02-064450
           imagePullPolicy: IfNotPresent
           resources:
             requests:
@@ -64,3 +48,21 @@ spec:
       imagePullSecrets:
         - name: ghcrcred
       restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: product-server
+    tier: backend
+  name: product-server
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: product-server
+    tier: backend
