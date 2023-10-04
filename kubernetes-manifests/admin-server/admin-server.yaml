@@ -9,7 +9,7 @@ spec:
   imagePullSecrets:
     - name: ghcrcred
   containers:
-    - image: ghcr.io/liberty52/liberty52-admin-server:dev-v-2023.10.04-021010
+    - image: ghcr.io/liberty52/liberty52-admin-server:dev-v-2023.10.01-071437
       name: admin-server
       resources: {}
   dnsPolicy: ClusterFirst
@@ -25,7 +25,7 @@ metadata:
   name: admin-server
 spec:
   ports:
-    - port: 444
+    - port: 8080
       protocol: TCP
       targetPort: 8080
   selector:
