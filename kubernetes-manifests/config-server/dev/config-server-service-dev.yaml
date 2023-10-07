@@ -6,6 +6,7 @@ metadata:
     tier: backend
   name: config-server
 spec:
+  type: LoadBalancer
   selector:
     app: config-server
     tier: backend
