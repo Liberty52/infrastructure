@@ -59,7 +59,7 @@ metadata:
     tier: backend
   name: product-server
 spec:
-  type: Loadbalancer
+  type: LoadBalancer
   ports:
     - port: 8080
       protocol: TCP
