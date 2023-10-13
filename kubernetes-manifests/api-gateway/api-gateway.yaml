@@ -21,7 +21,7 @@ spec:
       imagePullSecrets:
         - name: ghcrcred
       containers:
-        - image: ghcr.io/liberty52/liberty52-api-gateway:dev-v-2023.10.13-030652
+        - image: ghcr.io/liberty52/liberty52-api-gateway:dev-v-latest
           name: liberty-gateway
           resources: {}
 
