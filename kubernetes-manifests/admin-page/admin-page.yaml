@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: admin-page
-          image: ghcr.io/liberty52/liberty52-admin-page:dev-v-2023.10.16-154954
+          image: ghcr.io/liberty52/liberty52-admin-page:dev-v-2023.10.17-120319
           imagePullPolicy: IfNotPresent
       imagePullSecrets:
         - name: ghcrcred
