@@ -34,7 +34,7 @@ metadata:
     tier: backend
   name: auth-server
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - port: 8080
       protocol: TCP
