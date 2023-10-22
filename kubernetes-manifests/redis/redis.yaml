@@ -1,7 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: product-redis
+  name: redis
+  namespace: liberty52
 spec:
   replicas: 1
   selector:
@@ -23,7 +24,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: product-redis
+  name: redis
+  namespace: liberty52
 spec:
   selector:
     app: redis
@@ -31,5 +33,5 @@ spec:
     - protocol: TCP
       port: 6379
       targetPort: 6379
-  type: LoadBalancer
+  type: ClusterIP
 
