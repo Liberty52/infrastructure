@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariadb
+  labels:
+    app: mariadb
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+spec:
+  ports:
+    - port: 3306
+  selector:
+    app: mariadb
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb
+  labels:
+    app: mariadb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mariadb
+  template:
+    metadata:
+      name: mariadb
+      labels:
+        app: mariadb
+    spec:
+      containers:
+        - name: mariadb
+          image: mariadb:latest
+          env:
+            - name: MYSQL_USER
+              value: root
+            - name: MYSQL_ROOT_PASSWORD
+              value: ""
+            - name: MYSQL_ALLOW_EMPTY_PASSWORD
+              value: "yes"
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mariadb-data
+      volumes:
+        - name: mariadb-data
+          persistentVolumeClaim:
+            claimName: mariadb-data-pvc
+      restartPolicy: Always
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: mariadb-data-sc
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: gp2
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mariadb-data-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: mariadb-data-sc
