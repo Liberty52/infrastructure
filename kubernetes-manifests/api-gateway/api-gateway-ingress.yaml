@@ -33,6 +33,13 @@ spec:
                 name: api-gateway
                 port:
                   number: 80
+          - path: /swagger-ui/
+            pathType: Prefix
+            backend:
+              service:
+                name: api-gateway
+                port:
+                  number: 80
           - path: /actuator/health
             pathType: ImplementationSpecific
             backend:
