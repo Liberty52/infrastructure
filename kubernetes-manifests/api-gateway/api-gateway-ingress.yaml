@@ -33,8 +33,36 @@ spec:
                 name: api-gateway
                 port:
                   number: 80
-          - path: /swagger-ui/
-            pathType: Prefix
+          - path: /swagger-ui.html
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: api-gateway
+                port:
+                  number: 80
+          - path: /v3/api-docs
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: api-gateway
+                port:
+                  number: 80
+          - path: /v3/api-docs.yaml
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: api-gateway
+                port:
+                  number: 80
+          - path: /v3/api-docs/swagger-config
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: api-gateway
+                port:
+                  number: 80
+          - path: /webjars/
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: api-gateway
