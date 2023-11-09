@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: front-end
-          image: ghcr.io/liberty52/liberty52-front-end:dev-v-2023.11.09-100011
+          image: ghcr.io/liberty52/liberty52-front-end:dev-v-2023.11.09-140520
           imagePullPolicy: IfNotPresent
       imagePullSecrets:
         - name: ghcrcred
