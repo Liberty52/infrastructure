@@ -5491,11 +5491,10 @@ spec:
   - name: http
     protocol: TCP
     port: 20001
-    nodePort: 31000
   - name: http-metrics
     protocol: TCP
     port: 9090
-  type: NodePort
+  type: ClusterIP
   selector:
     app.kubernetes.io/name: kiali
     app.kubernetes.io/instance: kiali-server
