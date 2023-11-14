@@ -1,7 +1,7 @@
 eksctl create nodegroup \
   --cluster liberty52 \
   --region ap-northeast-2\
-  --name t3a-mediums-110-pods \
+  --name ${nodegroup_name} \
   --node-type t3a.medium \
   --nodes 1 \
   --nodes-min 1 \
