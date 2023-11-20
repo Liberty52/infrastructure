@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: product-server
-          image: ghcr.io/liberty52/liberty52-product-server:dev-v-2023.11.20-044906
+          image: ghcr.io/liberty52/liberty52-product-server:dev-v-2023.11.20-045158
           imagePullPolicy: IfNotPresent
 #          resources:
 #            requests:
