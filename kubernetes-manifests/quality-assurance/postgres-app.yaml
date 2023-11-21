@@ -41,6 +41,8 @@ spec:
       labels:
         app: postgres
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: ip-10-0-1-30.ap-northeast-2.compute.internal
       securityContext:
         fsGroup: 2000
       containers:

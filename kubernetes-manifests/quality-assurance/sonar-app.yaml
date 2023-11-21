@@ -30,6 +30,8 @@ spec:
       labels:
         app: sonar
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: ip-10-0-1-30.ap-northeast-2.compute.internal
       initContainers:
         - name: init
           image: busybox
