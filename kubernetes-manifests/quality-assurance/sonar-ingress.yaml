@@ -1,22 +1,37 @@
+#apiVersion: networking.k8s.io/v1
+#kind: Ingress
+#metadata:
+#  name: sonar
+#  namespace: sonar
+#  annotations:
+#    kubernetes.io/ingress.class: "nginx"
+#    nginx.ingress.kubernetes.io/proxy-body-size: 1tb
+#    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+#    nginx.ingress.kubernetes.io/rewrite-target: /
+#spec:
+#  rules:
+#    - host: sonar.liberty52.com
+#      http:
+#        paths:
+#          - path: /
+#            pathType: Prefix
+#            backend:
+#              service:
+#                name: sonar-svc
+#                port:
+#                  number: 9000
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: sonar
+  name: managed-cert-ingress-liberty52-sonar
   namespace: sonar
   annotations:
-    kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.kubernetes.io/proxy-body-size: 1tb
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.global-static-ip-name: sonar-liberty52
+    networking.gke.io/managed-certificates: managed-cert-liberty52
+    kubernetes.io/ingress.class: "gce"
 spec:
-  rules:
-    - host: sonar.liberty52.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: sonar-svc
-                port:
-                  number: 9000
+  defaultBackend:
+    service:
+      name: sonar-svc
+      port:
+        number: 9000
