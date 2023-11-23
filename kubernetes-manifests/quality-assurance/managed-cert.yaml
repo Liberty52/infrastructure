@@ -1,0 +1,7 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: managed-cert-liberty52
+spec:
+  domains:
+    - sonar.liberty52.com
