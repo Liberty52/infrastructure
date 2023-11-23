@@ -1,10 +1,11 @@
 eksctl create nodegroup \
-  --cluster liberty52 \
-  --region ap-northeast-2\
-  --name ${nodegroup_name} \
-  --node-type t3a.medium \
+  --cluster bloomsburylab \
+  --region ap-northeast-2 \
+  --name t4g-largess \
+  --node-type t4g.large \
   --nodes 1 \
   --nodes-min 1 \
-  --nodes-max 3 \
-  --node-volume-size 30 \
+  --nodes-max 1 \
+  --node-volume-size 50 \
+  --ssh-access \
   --max-pods-per-node=110
