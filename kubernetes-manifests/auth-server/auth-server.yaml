@@ -9,13 +9,13 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: auth-server-test
+      app: auth-server
       tier: backend
   strategy: {}
   template:
     metadata:
       labels:
-        app: auth-server-test
+        app: auth-server
         tier: backend
     spec:
       imagePullSecrets:
@@ -23,16 +23,14 @@ spec:
       containers:
         - image: ghcr.io/liberty52/liberty52-auth-server:dev-v-2023.11.27-044745
           name: liberty52-auth-server
-          readinessProbe:
-            httpGet:
-              path: /actuator/health
-              port: 8080
-            initialDelaySeconds: 30
-            periodSeconds: 10
-            timeoutSeconds: 5
-            failureThreshold: 3
-
-
+#          readinessProbe:
+#            httpGet:
+#              path: /actuator/health
+#              port: 8080
+#            initialDelaySeconds: 30
+#            periodSeconds: 10
+#            timeoutSeconds: 5
+#            failureThreshold: 3
 ---
 
 apiVersion: v1
