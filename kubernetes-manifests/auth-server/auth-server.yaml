@@ -21,7 +21,7 @@ spec:
       imagePullSecrets:
         - name: ghcrcred
       containers:
-        - image: ghcr.io/liberty52/liberty52-auth-server:dev-v-2023.11.29-054503
+        - image: ghcr.io/liberty52/liberty52-auth-server:dev-v-2023.11.29-063842
           name: liberty52-auth-server
 #          readinessProbe:
 #            httpGet:
