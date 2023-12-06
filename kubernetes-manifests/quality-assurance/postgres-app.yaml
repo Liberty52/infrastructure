@@ -41,11 +41,11 @@ spec:
       labels:
         app: postgres
     spec:
-      tolerations:
-        - key: "who"
-          operator: "Equal"
-          value: "imsonar"
-          effect: "NoSchedule"
+#      tolerations:
+#        - key: "who"
+#          operator: "Equal"
+#          value: "imsonar"
+#          effect: "NoSchedule"
       securityContext:
         fsGroup: 2000
       containers:
